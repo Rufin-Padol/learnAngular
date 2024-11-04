@@ -1,0 +1,72 @@
+
+<div
+  class="hero "
+  style="background-image: url(https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.webp);">
+  <div class="hero-overlay bg-opacity-60"></div>
+  <div class="hero-content text-neutral-content text-center">
+    <div class="max-w-md">
+      <h1 class="mb-5 text-5xl font-bold">{{showTitle()}}</h1>
+      <p class="mb-5">
+       Your complete  guite effective angular To-Do list
+      </p>
+      <button  (click)="toggleForm()" class="btn btn-neutral">{{changeTogglebtn()}}</button>
+    </div>
+  </div>
+</div>
+
+<!-- 
+<div class="flex justify-between mt-4 mx-6">
+    <h1 class="text-3xl font-bold ">Todos List</h1>
+    <button class="btn btn-neutral">Add</button>
+</div> -->
+
+
+
+<div class="flex flex-col gap-4 items-center  mt-12  ">
+
+    {{myTodo}}
+
+    @if(showform){
+        <input  [(ngModel)]="myTodo" value="{{myTodo}}" type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs" />
+
+        @if(editable){
+            <div class="flex gap-1">
+                <button (click)="updateTodo()" class="btn btn-wide btn-warning   ">Update</button>
+                <button (click)="initTodo()" class="btn  btn-neutral   ">Cancel</button>
+            </div>
+        }@else {
+            <button (click)="addTodo()" class="btn btn-wide btn-primary">Create</button>
+        }
+
+       
+
+    
+    }
+    @else {
+        <p>Click the shoz button above </p>
+        <p>{{todos}}</p>
+    }
+    
+ 
+    <ul class="menu bg-base-200 rounded-box w-80">
+        @for (todo of todos; track $index) {
+          <li> 
+              <span>{{todo}}</span>
+              <div class="justify-end">
+                  <button  (click)="editTodo(todo,$index)" class="btn btn-warning btn-sm">Edit</button>
+                @if (!editable ) {
+                    <button (click)="deleteTodo($index)" class="btn btn-error btn-sm">Delete</button>
+                }
+              </div>
+          </li>
+        }@empty {
+            <p>Not todo yet!!</p>
+        }
+           
+    </ul>
+         
+
+
+
+</div>
+

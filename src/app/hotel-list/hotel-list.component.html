@@ -1,0 +1,20 @@
+<p class=" font-bold text-4xl" *ngIf="hotels && hotels.length > 0 ">{{title}}</p>
+
+<button (click)="toggleIsNweBadge()" class=" m-2 py-2 px-4 bg-green-500 rounded-sm"> affiche nouveau</button>
+<div class=" border-2 w-[900px] flex flex-wrap ">
+    <div class="flex flex-wrap  w-1/3 mb-4  " *ngFor="let hotel of hotels">
+       <div  [title]="hotel.hotelName" class="card border-4  w-full">
+            <img class=" h-60 w-80" src="{{hotel.imageUrl}}" alt="">
+            <div class="">
+                <h5>{{hotel.hotelName}}</h5>
+                <p class="text-gray-500">
+                    {{hotel.description}}
+                </p>
+
+                <span 
+                *ngIf="showBadge" class="block bg-green-400 text-center">Message</span>
+            </div>
+       </div>
+    </div>
+</div>
+
